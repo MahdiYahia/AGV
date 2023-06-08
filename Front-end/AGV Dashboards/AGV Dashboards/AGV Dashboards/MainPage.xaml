@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             x:Class="AGV_Dashboards.MainPage"             
+             Title="Main Console">
+
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="1">
+                <StackLayout>
+                    <Button Text="Filter" Clicked="OnFilterClicked" />
+
+                    <Label x:Name="labelDatePicker"  Text="Choose a Date" TextColor="#333333" HorizontalOptions="Center" 
+                   Style="{DynamicResource TitleStyle}"
+                   Margin="20, 20" IsVisible="False"
+                    />
+                    <DatePicker x:Name="filteringDatePicker" Format="D" Margin="10, 0, 0, 30" IsVisible="False" DateSelected="OnDateSelected"/>
+                    <StackLayout>
+                        <Label Text="Images Taken by the Camera" FontSize="24"  TextColor="#333333" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <ScrollView  Orientation="Horizontal" Grid.Row="1" HeightRequest="300">
+                            <StackLayout x:Name="ImageStack" Orientation="Horizontal">
+                                <!-- Any existing images in the stack will be preserved, and new images will be added to the right of them -->
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Obstacles Detected" FontSize="24"  TextColor="#333333" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <ScrollView  Orientation="Horizontal" Grid.Row="2" HeightRequest="300">
+                            <StackLayout x:Name="ObstaclesImageStack" Orientation="Horizontal">
+                                <!-- Any existing images in the stack will be preserved, and new images will be added to the right of them -->
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                    <oxy:PlotView x:Name="memoryChart" Grid.Row="3" HeightRequest="400" Margin="0,20"/>
+                    <oxy:PlotView x:Name="cpuChart" Grid.Row="4" HeightRequest="400" Margin="0,20" />
+                    <oxy:PlotView x:Name="speedPlot" Grid.Row="5" HeightRequest="300" Margin="0,15"/>
+                    <oxy:PlotView x:Name="directionPlot" Grid.Row="6" HeightRequest="300" Margin="0,15"/>
+                    <oxy:PlotView x:Name="lineTrackerPlot" Grid.Row="7" HeightRequest="300" Margin="0,15"/>
+                    <oxy:PlotView x:Name="ultrasonicPlot" Grid.Row="8" HeightRequest="400" Margin="0,15"/>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
